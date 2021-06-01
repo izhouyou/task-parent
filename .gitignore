@@ -1,0 +1,9 @@
+# Project exclude paths
+/lagou-service-code/target/
+/lagou-service-common/target/
+/lagou-service-config-8140/target/
+/lagou-service-email/target/
+/lagou-service-eureka-8120/target/
+/lagou-service-eureka-8121/target/
+/lagou-service-gateway-8130/target/
+/lagou-service-user/target/

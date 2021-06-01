@@ -1,0 +1,22 @@
+server:
+  port: 8111
+spring:
+  application:
+    name: lagou-service-email
+  cloud:
+    # config客户端配置,和ConfigServer通信，并告知ConfigServer希望获取的配置信息在哪个文件中
+    config:
+      name: lagou-service-resume  #配置文件名称
+      profile: dev  #后缀名称
+      label: master #分支名称
+#      uri: http://localhost:8140    #ConfigServer配置中心地址
+      discovery:
+        enabled: true
+        service-id: lagou-cloud-configserver
+eureka:
+  client:
+    service-url:
+      defaultZone: http://LagouCloudEurekaServerA:8120/eureka,http://LagouCloudEurekaServerB:8121/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@

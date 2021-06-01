@@ -1,0 +1,24 @@
+server:
+  port: 8110
+spring:
+  application:
+    name: lagou-service-user
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lagou?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+  jpa:
+    database: MySQL
+    show-sql: true
+    hibernate:
+      naming:
+        #避免将驼峰命名转换为下划线命名
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+eureka:
+  client:
+    service-url:
+      defaultZone: http://lagoucloudeurekaservera:8120/eureka/,http://lagoucloudeurekaserverb:8121/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}@project.version@
